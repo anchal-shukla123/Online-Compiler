@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, UNSAFE_WithComponentProps } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Compiler from './pages/Compiler';
 import About from './pages/About';
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Footer from './components/Footer';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Adsense from './components/Adsense';
 /**
  * Main App Component

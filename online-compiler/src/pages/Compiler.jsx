@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Editor from "@monaco-editor/react";
-import { LANGUAGES, getLanguageById } from "../utils/languages";
-import { executeCode } from "../utils/api";
-import "./Compiler.css";
-import Adsense from "../components/Adsense";
+import React, { useState, useEffect } from 'react';
+import Editor from '@monaco-editor/react';
+import { LANGUAGES, getLanguageById } from '../utils/languages';
+import { executeCode } from '../utils/api';
+import './Compiler.css';
 
 /**
  * Compiler Page Component
@@ -13,15 +12,15 @@ const Compiler = () => {
   // State management
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGES[0]); // Default: Python
   const [code, setCode] = useState(LANGUAGES[0].defaultCode);
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [executionStats, setExecutionStats] = useState(null);
 
   // Update code when language changes
   useEffect(() => {
     setCode(selectedLanguage.defaultCode);
-    setOutput("");
+    setOutput('');
     setExecutionStats(null);
   }, [selectedLanguage]);
 
@@ -29,7 +28,7 @@ const Compiler = () => {
    * Handle language selection change
    */
   const handleLanguageChange = (e) => {
-    const languageId = parseInt(e.target.value);
+    const languageId = e.target.value; // Keep as string, don't parse as int
     const language = getLanguageById(languageId);
     setSelectedLanguage(language);
   };
@@ -39,26 +38,27 @@ const Compiler = () => {
    */
   const handleRunCode = async () => {
     // Clear previous output
-    setOutput("");
+    setOutput('');
     setExecutionStats(null);
     setIsLoading(true);
 
     try {
-      // Execute code using Judge0 API
-      const result = await executeCode(code, selectedLanguage.id, input);
+      // Execute code using Piston API
+      const result = await executeCode(
+        code, 
+        selectedLanguage.id, 
+        selectedLanguage.version, 
+        input
+      );
 
       // Display output or error
       if (result.success) {
-        setOutput(
-          result.output || "Program executed successfully with no output.",
-        );
+        setOutput(result.output || 'Program executed successfully with no output.');
         setExecutionStats({
-          time: result.time,
-          memory: result.memory,
           status: result.status,
         });
       } else {
-        setOutput(result.error || "An error occurred during execution.");
+        setOutput(result.error || 'An error occurred during execution.');
         setExecutionStats({
           status: result.status,
         });
@@ -74,14 +74,14 @@ const Compiler = () => {
    * Handle editor change
    */
   const handleEditorChange = (value) => {
-    setCode(value || "");
+    setCode(value || '');
   };
 
   /**
    * Handle clear output
    */
   const handleClearOutput = () => {
-    setOutput("");
+    setOutput('');
     setExecutionStats(null);
   };
 
@@ -90,8 +90,8 @@ const Compiler = () => {
    */
   const handleResetCode = () => {
     setCode(selectedLanguage.defaultCode);
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
     setExecutionStats(null);
   };
 
@@ -101,7 +101,7 @@ const Compiler = () => {
         {/* Header Section */}
         <div className="compiler-header fade-in">
           <h1 className="page-title">
-            <span className="title-icon">{"</>"}</span>
+            <span className="title-icon">{'</>'}</span>
             Online Compiler
           </h1>
           <p className="page-subtitle">
@@ -161,9 +161,9 @@ const Compiler = () => {
                   scrollBeyondLastLine: false,
                   automaticLayout: true,
                   tabSize: 4,
-                  wordWrap: "on",
-                  lineNumbers: "on",
-                  renderWhitespace: "selection",
+                  wordWrap: 'on',
+                  lineNumbers: 'on',
+                  renderWhitespace: 'selection',
                   bracketPairColorization: { enabled: true },
                 }}
               />
@@ -235,26 +235,10 @@ const Compiler = () => {
               <div className="execution-stats">
                 <div className="stat-item">
                   <span className="stat-label">Status:</span>
-                  <span
-                    className={`stat-value status-${executionStats.status === "Accepted" ? "success" : "error"}`}
-                  >
+                  <span className={`stat-value status-${executionStats.status === 'Success' ? 'success' : 'error'}`}>
                     {executionStats.status}
                   </span>
                 </div>
-                {executionStats.time && (
-                  <div className="stat-item">
-                    <span className="stat-label">Time:</span>
-                    <span className="stat-value">{executionStats.time}s</span>
-                  </div>
-                )}
-                {executionStats.memory && (
-                  <div className="stat-item">
-                    <span className="stat-label">Memory:</span>
-                    <span className="stat-value">
-                      {executionStats.memory} KB
-                    </span>
-                  </div>
-                )}
               </div>
             )}
 
@@ -278,27 +262,6 @@ const Compiler = () => {
                 </div>
               )}
             </div>
-          </div>
-        </div>
-        {/* SAFE AD BELOW COMPILER */}
-        <div className="compiler-ad-wrapper">
-          <Adsense slot="8351730639" />
-        </div>
-        {/* API Key Notice */}
-        <div className="api-notice fade-in">
-          <div className="notice-icon">⚠️</div>
-          <div className="notice-content">
-            <strong>Important:</strong> You need to add your RapidAPI key in{" "}
-            <code>src/utils/api.js</code> to use the compiler. Get your free API
-            key at{" "}
-            <a
-              href="https://rapidapi.com/judge0-official/api/judge0-ce"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="notice-link"
-            >
-              RapidAPI - Judge0
-            </a>
           </div>
         </div>
       </div>

@@ -1,13 +1,14 @@
 /**
- * Language Configuration for Judge0 API
- * Maps language names to their Judge0 language IDs and Monaco editor modes
+ * Language Configuration for Piston API
+ * Maps language names to their Piston language identifiers and Monaco editor modes
  */
 
 export const LANGUAGES = [
   {
-    id: 71,
+    id: 'python',
     name: 'Python',
     label: 'Python (3.10)',
+    version: '3.10.0',
     monacoMode: 'python',
     defaultCode: `# Python Code
 def greet(name):
@@ -20,9 +21,10 @@ print(result)
 `,
   },
   {
-    id: 50,
+    id: 'c',
     name: 'C',
-    label: 'C (GCC 9.2.0)',
+    label: 'C (GCC 10.2.0)',
+    version: '10.2.0',
     monacoMode: 'c',
     defaultCode: `// C Code
 #include <stdio.h>
@@ -39,9 +41,10 @@ int main() {
 `,
   },
   {
-    id: 54,
+    id: 'cpp',
     name: 'C++',
-    label: 'C++ (GCC 9.2.0)',
+    label: 'C++ (GCC 10.2.0)',
+    version: '10.2.0',
     monacoMode: 'cpp',
     defaultCode: `// C++ Code
 #include <iostream>
@@ -60,9 +63,10 @@ int main() {
 `,
   },
   {
-    id: 62,
+    id: 'java',
     name: 'Java',
-    label: 'Java (OpenJDK 13.0.1)',
+    label: 'Java (JDK 15.0.2)',
+    version: '15.0.2',
     monacoMode: 'java',
     defaultCode: `// Java Code
 import java.util.Scanner;
@@ -81,9 +85,10 @@ public class Main {
 `,
   },
   {
-    id: 63,
+    id: 'javascript',
     name: 'JavaScript',
-    label: 'JavaScript (Node.js 12.14.0)',
+    label: 'JavaScript (Node.js 18.15.0)',
+    version: '18.15.0',
     monacoMode: 'javascript',
     defaultCode: `// JavaScript Code
 // Note: For input, use the stdin input box below

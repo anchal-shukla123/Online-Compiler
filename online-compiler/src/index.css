@@ -184,6 +184,17 @@ code, pre {
   animation: slideInRight 0.6s ease-out;
 }
 
+/* App wrapper for footer positioning */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app > * {
+  flex-shrink: 0;
+}
+
 /* Focus States */
 button:focus,
 select:focus,

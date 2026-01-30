@@ -29,7 +29,8 @@ const About = () => {
                 CodeRunner is a powerful online compiler that allows you to write, compile, and execute
                 code in multiple programming languages directly in your browser. Built entirely on the
                 frontend using React, it demonstrates how modern web technologies can create sophisticated
-                applications without requiring a traditional backend server.
+                applications without requiring a traditional backend server. It uses the free and open-source
+                Piston API for code execution.
               </p>
             </section>
 
@@ -59,8 +60,8 @@ const About = () => {
                 </div>
                 <div className="tech-item">
                   <div className="tech-icon">🔌</div>
-                  <h3 className="tech-name">Judge0 API</h3>
-                  <p className="tech-description">Code execution and compilation service</p>
+                  <h3 className="tech-name">Piston API</h3>
+                  <p className="tech-description">Free code execution service</p>
                 </div>
                 <div className="tech-item">
                   <div className="tech-icon">🌐</div>
@@ -76,23 +77,23 @@ const About = () => {
               <div className="language-list">
                 <div className="language-item">
                   <span className="language-badge">Python</span>
-                  <span className="language-version">3.10</span>
+                  <span className="language-version">3.10.0</span>
                 </div>
                 <div className="language-item">
                   <span className="language-badge">C</span>
-                  <span className="language-version">GCC 9.2.0</span>
+                  <span className="language-version">GCC 10.2.0</span>
                 </div>
                 <div className="language-item">
                   <span className="language-badge">C++</span>
-                  <span className="language-version">GCC 9.2.0</span>
+                  <span className="language-version">GCC 10.2.0</span>
                 </div>
                 <div className="language-item">
                   <span className="language-badge">Java</span>
-                  <span className="language-version">OpenJDK 13</span>
+                  <span className="language-version">JDK 15.0.2</span>
                 </div>
                 <div className="language-item">
                   <span className="language-badge">JavaScript</span>
-                  <span className="language-version">Node.js 12</span>
+                  <span className="language-version">Node.js 18.15.0</span>
                 </div>
               </div>
             </section>
@@ -144,18 +145,18 @@ const About = () => {
                 <div className="workflow-step">
                   <div className="step-number">2</div>
                   <div className="step-content">
-                    <h3 className="step-title">Submit to Judge0</h3>
+                    <h3 className="step-title">Submit to Piston</h3>
                     <p className="step-description">
-                      Code is sent to Judge0 API for compilation and execution
+                      Code is sent to Piston API for instant compilation and execution
                     </p>
                   </div>
                 </div>
                 <div className="workflow-step">
                   <div className="step-number">3</div>
                   <div className="step-content">
-                    <h3 className="step-title">Poll for Results</h3>
+                    <h3 className="step-title">Instant Results</h3>
                     <p className="step-description">
-                      Application polls the API to check execution status
+                      Piston executes immediately and returns results in one response
                     </p>
                   </div>
                 </div>
@@ -164,7 +165,7 @@ const About = () => {
                   <div className="step-content">
                     <h3 className="step-title">Display Output</h3>
                     <p className="step-description">
-                      Results, errors, and statistics are displayed in the console
+                      Results and errors are displayed instantly in the console
                     </p>
                   </div>
                 </div>
@@ -176,18 +177,18 @@ const About = () => {
               <h2 className="section-heading">Limitations</h2>
               <div className="limitations-box">
                 <p className="limitation-item">
-                  <strong>API Key Required:</strong> You need a RapidAPI key to use Judge0. 
-                  Free tier available at <a href="https://rapidapi.com/judge0-official/api/judge0-ce" 
-                  target="_blank" rel="noopener noreferrer" className="link-cyan">RapidAPI</a>
+                  <strong>Free & Open Source:</strong> Piston API is completely free with no API key required! 
+                  Learn more at <a href="https://github.com/engineer-man/piston" 
+                  target="_blank" rel="noopener noreferrer" className="link-cyan">GitHub</a>
                 </p>
                 <p className="limitation-item">
-                  <strong>Rate Limits:</strong> Free tier has request limits. Consider upgrading for production use.
-                </p>
-                <p className="limitation-item">
-                  <strong>Execution Time:</strong> Limited to a few seconds per execution by Judge0.
+                  <strong>Execution Time:</strong> Limited to a few seconds per execution for safety.
                 </p>
                 <p className="limitation-item">
                   <strong>No File I/O:</strong> File operations are not supported in this environment.
+                </p>
+                <p className="limitation-item">
+                  <strong>Network Disabled:</strong> Programs cannot make external network requests.
                 </p>
               </div>
             </section>
@@ -195,7 +196,7 @@ const About = () => {
             {/* Footer */}
             <section className="about-footer">
               <p className="footer-text">
-                Built with ❤️ using React, Vite, and Judge0 API
+                Built with ❤️ using React, Vite, and Piston API
               </p>
               <p className="footer-text">
                 For educational purposes and demonstration of frontend capabilities
